@@ -16,7 +16,7 @@ class App extends React.Component {
 
 
   getLocFun = async (event) => {
-    event.preventDefaulft();
+    event.preventDefault();
     console.log("inside getLocFun");
 
     // let cityName = event.target.city.value;
@@ -27,7 +27,7 @@ class App extends React.Component {
 
     console.log('key', process.env.REACT_APP_API_LOCATION_KEY);
 
-    let reqUrl = 'https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_LOCATION_KEY}&q=${this.state.searchQuery}&format=json'
+    let reqUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_LOCATION_KEY}&q=${this.state.searchQuery}&format=json`
 
     let locResult = await axios.get(reqUrl);
     console.log('Location Result', locResult);
@@ -54,7 +54,7 @@ class App extends React.Component {
         <p>City Name: {this.state.searchQuery}</p>
         <p>latitude: {this.state.locationResult.lat}</p>
         <p>longitude:{this.state.locationResult.lon} </p>
-        <img src={'https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_LOCATION_KEY}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10'} alt="city" />
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_LOCATION_KEY}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`} alt="city" />
         </>
 
   }
